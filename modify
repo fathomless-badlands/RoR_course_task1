@@ -1,0 +1,22 @@
+=begin
+class A
+  def to_modify
+    puts "print from not modified method"
+  end
+end
+
+A.new.to_modify #=> "print from not modified method"
+modify( A ) #=> it should modify class A to this
+A.new.to_modify #=> "print from modified method, yeah!!!" 
+=end
+
+
+
+
+def modify (classs, method_name)
+  if classs.method_defined? method_name
+    self.send :define_method, method_name do
+      puts "print from modified method, yeah!!!"
+    end
+  end
+end

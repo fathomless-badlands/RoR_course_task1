@@ -11,6 +11,12 @@ A.new.to_modify #=> "print from modified method, yeah!!!"
 =end
 
 
+class A
+  def to_modify
+    puts "print from not modified method"
+  end
+end
+
 
 
 def modify (classs, method_name)
@@ -20,3 +26,7 @@ def modify (classs, method_name)
     end
   end
 end
+
+A.new.to_modify #=> "print from not modified method"
+modify( A, "to_modify") #=> it should modify class A to this
+A.new.to_modify #=> "print from modified method, yeah!!!" 
